@@ -1,0 +1,4 @@
+cmd_parsl.slurm.*
+runinfo/*
+__pycache__/*
+example_configs/__pycache__/*
