@@ -1,0 +1,2 @@
+# Executor configurations for coffea
+
