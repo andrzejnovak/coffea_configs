@@ -1,5 +1,3 @@
-
-
 import json
 import argparse
 from rich.pretty import pprint
@@ -13,6 +11,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Run a single test')
     parser.add_argument('-i', '--input', dest='input', default=r'inputs/test.root', help='Input files to test on (.root, .json).')
     parser.add_argument('-c', '--config', dest='config', default=r'example_run_configs/iterative.py', help='Config file with ``run_instance``.')
+
+    parser.add_argument('--maxchunks', dest='maxchunks', default=1, help='Runner().maxchunks')
+    parser.add_argument('--chunksize', dest='chunksize', default=100, help='Runner().chunksize')
     args = parser.parse_args()
 
     # Parse input
@@ -25,6 +26,8 @@ if __name__ == '__main__':
     # Import 
     tested_confifg = importfile(args.config)
     run_instance = tested_confifg.run_instance
+    run_instance.maxchunks = args.maxchunks
+    run_instance.chunksize = args.chunksize
     
     # Run test
     print("X"*100)
